@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Operation: Make Him Smile 💗</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="world-background" aria-hidden="true">
+        <div class="world-sun"></div>
+        <div class="world-cloud cloud-left"></div>
+        <div class="world-cloud cloud-right"></div>
+        <div class="mountain mountain-left"></div>
+        <div class="mountain mountain-right"></div>
+        <div class="pixel-tree tree-left">
+            <div class="tree-leaves"></div>
+            <div class="tree-trunk"></div>
+            <div class="tree-ground"></div>
+        </div>
+        <div class="pixel-tree tree-right">
+            <div class="tree-leaves"></div>
+            <div class="tree-trunk"></div>
+            <div class="tree-ground"></div>
+        </div>
+        <div class="world-ground">
+            <div class="grass-layer"></div>
+            <div class="dirt-layer"></div>
+        </div>
+    </div>
+
+  <main class="game-container">
+    <!-- Decorative game world -->
+    <div class="pixel-decorations">
+        <span class="pixel-cloud cloud-one"></span>
+        <span class="pixel-cloud cloud-two"></span>
+        <span class="floating-heart heart-one">♥</span>
+        <span class="floating-heart heart-two">♥</span>
+        <span class="floating-star star-one">✦</span>
+        <span class="floating-star star-two">✧</span>
+    </div>
+    <!-- Welcome screen -->
+    <section id="welcome-screen" class="screen">
+      <div class="emoji">💌</div>
+
+      <h1>Operation: Make Him Smile</h1>
+
+      <p class="subtitle">
+        A tiny mission to turn that frown upside down.
+      </p>
+
+      <p class="message">
+        Your girlfriend has prepared a little something for you...
+      </p>
+
+      <button id="start-button">
+        START MY MISSION 💗
+      </button>
+    </section>
+
+
+    <!-- Quiz screen -->
+    <section id="quiz-screen" class="screen hidden">
+
+      <p id="progress-text">Question 1 of 6</p>
+
+      <div class="progress-bar">
+        <div id="progress-fill"></div>
+      </div>
+
+      <div id="question-emoji" class="emoji">🥺</div>
+
+      <h2 id="question-text">
+        Your question will appear here
+      </h2>
+
+      <div id="answer-buttons" class="answer-buttons">
+        <!-- Answer buttons will be created using JavaScript -->
+      </div>
+
+      <p id="feedback-message"></p>
+
+      <p id="score-text">Score: 0</p>
+
+    </section>
+
+
+    <!-- Final screen -->
+    <section id="final-screen" class="screen hidden">
+
+      <div class="emoji">🥹💗</div>
+
+      <h1>MISSION COMPLETE!</h1>
+
+      <p>
+        You made it through all the questions!
+      </p>
+
+      <h2 id="final-score">Your score: 60</h2>
+
+      <p class="message">
+        Your girlfriend loves you more than all the stars in the sky. ✨
+      </p>
+
+      <p class="final-message">
+        Now come here and give her a hug! 🫂
+      </p>
+
+    </section>
+
+  </main>
+
+  <script type="module" src="main.js"></script>
+
+</body>
+</html>

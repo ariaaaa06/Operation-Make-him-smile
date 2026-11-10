@@ -1,0 +1,653 @@
+
+/* IMPORT PIXEL FONT */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;700;800&display=swap');
+
+/* COLOR PALETTE */
+:root {
+  --pink: #e9a6bd;
+  --dark-pink: #bd718f;
+  --blue: #91c4e8;
+  --dark-blue: #568eb8;
+  --cream: #fff3df;
+  --brown: #76543e;
+  --dark-brown: #493325;
+  --white: #ffffff;
+}
+
+/* GENERAL PAGE */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+
+  background:
+    linear-gradient(
+      rgba(38, 54, 80, 0.25),
+      rgba(38, 54, 80, 0.25)
+    ),
+    linear-gradient(
+      180deg,
+      #91c4e8 0%,
+      #c8dced 55%,
+      #a8c98d 100%
+    );
+
+  font-family: 'Nunito', sans-serif;
+  color: var(--dark-brown);
+}
+
+/* MAIN GAME BOX */
+.game-container {
+  width: 100%;
+  max-width: 650px;
+  min-height: 500px;
+  padding: 35px 25px;
+
+  background: var(--cream);
+
+  border: 6px solid var(--brown);
+  outline: 5px solid rgba(255, 255, 255, 0.5);
+
+  box-shadow:
+    0 10px 0 var(--dark-brown),
+    0 18px 35px rgba(0, 0, 0, 0.25);
+
+  text-align: center;
+}
+
+/* SCREENS */
+.screen {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+/* HEADINGS */
+h1,
+h2 {
+  font-family: 'Press Start 2P', cursive;
+  line-height: 1.7;
+  color: var(--dark-pink);
+}
+
+h1 {
+  font-size: 23px;
+}
+
+h2 {
+  font-size: 15px;
+}
+
+p {
+  line-height: 1.7;
+}
+
+/* EMOJIS */
+.emoji {
+  font-size: 65px;
+  margin: 15px 0;
+}
+
+/* TEXT */
+.subtitle {
+  color: var(--dark-blue);
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.message {
+  font-size: 16px;
+  margin: 25px 0;
+}
+
+/* PIXEL BUTTONS */
+button {
+  border: 4px solid var(--dark-brown);
+  padding: 16px 20px;
+
+  font-family: 'Press Start 2P', cursive;
+  font-size: 11px;
+
+  color: var(--dark-brown);
+  background: var(--pink);
+
+  box-shadow: 0 6px 0 var(--dark-brown);
+
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+button:hover {
+  background: var(--blue);
+}
+
+button:active {
+  transform: translateY(5px);
+  box-shadow: 0 1px 0 var(--dark-brown);
+}
+
+/* QUIZ ANSWERS */
+.answer-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 30px 0;
+}
+
+.answer-buttons button {
+  width: 100%;
+  background: #d7eafa;
+  line-height: 1.8;
+}
+
+.answer-buttons button:hover {
+  background: #f1c4d5;
+}
+
+/* PROGRESS BAR */
+.progress-bar {
+  height: 22px;
+  background: #d9d0c3;
+  border: 4px solid var(--brown);
+  margin: 15px 0 25px;
+  overflow: hidden;
+}
+
+#progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--pink);
+  transition: width 0.3s ease;
+}
+
+/* QUIZ DETAILS */
+#progress-text,
+#score-text {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  color: var(--dark-blue);
+}
+
+#feedback-message {
+  min-height: 28px;
+  font-weight: 800;
+  color: var(--dark-pink);
+}
+
+/* FINAL SCREEN */
+.final-message {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--dark-blue);
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 480px) {
+  .game-container {
+    padding: 25px 16px;
+  }
+
+  h1 {
+    font-size: 16px;
+  }
+
+  h2 {
+    font-size: 12px;
+  }
+
+  button {
+    font-size: 9px;
+    padding: 14px;
+  }
+}
+
+/* ==============================
+   MINECRAFT-INSPIRED DECORATIONS
+============================== */
+
+/* Make the game box a positioning reference */
+.game-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Keep the actual game content above decorations */
+.screen {
+  position: relative;
+  z-index: 2;
+}
+
+/* Decorative layer */
+.pixel-decorations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* PIXEL CLOUDS */
+.pixel-cloud {
+  position: absolute;
+  width: 55px;
+  height: 18px;
+  background: white;
+  opacity: 0.8;
+
+  box-shadow:
+    12px -12px 0 white,
+    28px -12px 0 white,
+    40px 0 0 white;
+}
+
+.cloud-one {
+  top: 45px;
+  left: 25px;
+}
+
+.cloud-two {
+  bottom: 90px;
+  right: 75px;
+  transform: scale(0.65);
+}
+
+/* FLOATING HEARTS */
+.floating-heart {
+  position: absolute;
+  color: var(--dark-pink);
+  font-size: 25px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.heart-one {
+  top: 130px;
+  right: 30px;
+}
+
+.heart-two {
+  bottom: 35px;
+  left: 30px;
+  animation-delay: 1s;
+}
+
+/* PIXEL STARS */
+.floating-star {
+  position: absolute;
+  color: #e5b95e;
+  font-size: 25px;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.star-one {
+  top: 220px;
+  left: 25px;
+}
+
+.star-two {
+  bottom: 180px;
+  right: 25px;
+  animation-delay: 0.8s;
+}
+
+/* FLOATING ANIMATION */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* SPARKLE ANIMATION */
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+/* BLOCKY GAME BUTTON HOVER */
+button {
+  image-rendering: pixelated;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background 0.2s ease;
+}
+
+button:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* PIXEL-STYLE PROGRESS BAR */
+.progress-bar {
+  border-radius: 0;
+  box-shadow: 3px 3px 0 rgba(73, 51, 37, 0.2);
+}
+
+/* VICTORY SCREEN */
+#final-screen {
+  padding: 20px 0;
+}
+
+#final-screen .emoji {
+  animation: float 2s ease-in-out infinite;
+}
+
+#final-score {
+  display: inline-block;
+  padding: 15px;
+  background: #d7eafa;
+  border: 4px solid var(--dark-blue);
+  box-shadow: 4px 4px 0 var(--dark-brown);
+}
+
+/* MOBILE DECORATION ADJUSTMENTS */
+@media (max-width: 480px) {
+  .cloud-one {
+    left: 8px;
+    transform: scale(0.7);
+  }
+
+  .heart-one {
+    right: 10px;
+  }
+
+  .star-one {
+    left: 8px;
+  }
+}
+/* CORRECT ANSWER CELEBRATION */
+@keyframes rewardPop {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.04);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.reward-pop {
+  animation: rewardPop 0.35s ease;
+}
+
+/* =================================
+   CHERRY BLOSSOM MINECRAFT WORLD
+================================= */
+
+body {
+  position: relative;
+  isolation: isolate;
+  background: #9bcbed;
+}
+
+/* FULL WORLD BACKGROUND */
+.world-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: linear-gradient(
+    to bottom,
+    #8fc4e9 0%,
+    #c2e0f2 65%,
+    #dce9cf 100%
+  );
+}
+
+/* PIXEL SUN */
+.world-sun {
+  position: absolute;
+  top: 9%;
+  right: 17%;
+  width: 65px;
+  height: 65px;
+  background: #ffe6a8;
+  box-shadow: 0 0 35px rgba(255, 230, 168, 0.6);
+}
+
+/* BLOCKY CLOUDS */
+.world-cloud {
+  position: absolute;
+  width: 65px;
+  height: 20px;
+  background: #fffaf3;
+
+  box-shadow:
+    15px -15px 0 #fffaf3,
+    35px -15px 0 #fffaf3,
+    50px 0 0 #fffaf3;
+}
+
+.cloud-left {
+  top: 17%;
+  left: 12%;
+  animation: cloudMove 8s ease-in-out infinite alternate;
+}
+
+.cloud-right {
+  top: 28%;
+  right: 12%;
+  transform: scale(0.8);
+  animation: cloudMove 10s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes cloudMove {
+  from { translate: -8px 0; }
+  to { translate: 12px 0; }
+}
+
+/* DISTANT PIXEL MOUNTAINS */
+.mountain {
+  position: absolute;
+  bottom: 20%;
+  width: 0;
+  height: 0;
+  border-left: 110px solid transparent;
+  border-right: 110px solid transparent;
+  border-bottom: 170px solid #8caeaa;
+}
+
+.mountain::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: -35px;
+  width: 70px;
+  height: 45px;
+  background: #f4f3ed;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.mountain-left {
+  left: 8%;
+}
+
+.mountain-right {
+  right: 7%;
+  transform: scale(1.3);
+  border-bottom-color: #a0bcb0;
+}
+
+/* PIXEL TREES */
+.pixel-tree {
+  position: absolute;
+  bottom: 13%;
+  width: 100px;
+  height: 190px;
+}
+
+.tree-left {
+  left: 5%;
+}
+
+.tree-right {
+  right: 5%;
+  transform: scale(1.15);
+}
+
+.tree-trunk {
+  position: absolute;
+  bottom: 0;
+  left: 40px;
+  width: 22px;
+  height: 95px;
+  background: #916044;
+  box-shadow: inset -6px 0 #70482f;
+}
+
+.tree-leaves {
+  position: absolute;
+  bottom: 65px;
+  left: 0;
+  width: 100px;
+  height: 75px;
+  background: #d995b3;
+
+  box-shadow:
+    15px -20px 0 #e8b0c5,
+    35px -20px 0 #d995b3,
+    55px -20px 0 #e8b0c5,
+    -10px 0 0 #e8b0c5,
+    10px 15px 0 #d995b3,
+    40px 15px 0 #e8b0c5;
+}
+
+.tree-ground {
+  position: absolute;
+  bottom: -8px;
+  left: 15px;
+  width: 75px;
+  height: 12px;
+  background: #6f9c62;
+}
+
+/* GRASS AND DIRT BLOCKS */
+.world-ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 14%;
+  background: #986b4d;
+}
+
+.grass-layer {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 22px;
+  background: #83ad67;
+  border-bottom: 7px solid #6e9856;
+}
+
+.dirt-layer {
+  position: absolute;
+  top: 22px;
+  width: 100%;
+  height: 100%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 45px,
+      rgba(91, 57, 39, 0.15) 45px 49px
+    ),
+    #986b4d;
+}
+
+/* QUEST PANEL LOOK */
+.game-container {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 243, 223, 0.97);
+  border: 6px solid #76543e;
+  box-shadow:
+    0 10px 0 #493325,
+    0 18px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* SMALLER WORLD ON PHONES */
+@media (max-width: 600px) {
+  .pixel-tree {
+    transform: scale(0.65);
+    transform-origin: bottom;
+  }
+
+  .tree-right {
+    transform: scale(0.75);
+  }
+
+  .mountain {
+    transform: scale(0.7);
+    transform-origin: bottom;
+  }
+
+  .mountain-right {
+    transform: scale(0.85);
+  }
+
+  .world-sun {
+    width: 45px;
+    height: 45px;
+  }
+}
+/* WOODEN QUEST BOARD DETAILS */
+.game-container {
+  border: 8px solid #76543e;
+  outline: 4px solid #c49a6c;
+  border-radius: 2px;
+}
+
+/* PIXEL-STYLE ANSWER BLOCKS */
+.answer-buttons button {
+  border: 4px solid #568eb8;
+  background: #d7eafa;
+  box-shadow: 0 5px 0 #345d7b;
+  border-radius: 2px;
+}
+
+.answer-buttons button:hover {
+  background: #f1c4d5;
+  border-color: #bd718f;
+  box-shadow: 0 5px 0 #92536d;
+}
+
+/* WOODEN QUEST START BUTTON */
+#start-button {
+  background: #d9ad7c;
+  border-color: #76543e;
+  box-shadow: 0 6px 0 #493325;
+}
+
+#start-button:hover {
+  background: #e9a6bd;
+}
+
+/* PIXEL VICTORY SCORE */
+#final-score {
+  background: #b9d9ef;
+  border: 5px solid #568eb8;
+  box-shadow: 5px 5px 0 #345d7b;
+}
